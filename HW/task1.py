@@ -3,20 +3,18 @@ from random import randint
 
 def randgame(n, k):
     ans = randint(1, n)
-    for i in range(n):
-        print("Осталось попыток: %d" % k)
+    for i in range(k):
+        print("Осталось попыток: %d" % (k - i))
         try:
             a = int(input("Ваше число: "))
         except TypeError:
             print("Вы ввели не целое число")
-        if k == 1 and a != ans:
+        if i == k - 1 and a != ans:
             return "Вы не угадали\nПопытки закончились\nЗагаданное число: %d" % ans
         elif a < ans:
             print("Ваше число меньше загаданного")
-            k -= 1
         elif a > ans:
             print("Ваше число больше загаданного")
-            k -= 1
         elif a == ans:
             return "Вы угадали"
 
